@@ -1,0 +1,23 @@
+@extends('template.users')
+@section('title','Novo Usuário')
+@section('body')
+<h1>Novo Usuário</h1>
+
+    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="mb-3">
+            <input type="nome" name="name" class="form-control" placeholder="digite seu nome">
+        </div>
+        <div class="mb-3">
+            <input type="email" name="email" class="form-control" placeholder="digite seu email">
+        </div>
+        <div class="mb-3">
+            <input type="password" name="password" class="form-control" placeholder="digite sua senha"/>
+        </div>
+        <div class="mb-3">
+            <input type="file" name="image" id="image" class="form-control form control-md" />
+        </div>
+        <button type="submit" class="btn btn-outline-dark btn-sm">NOVO</button>
+        <a href="{{ route('users.index') }}" class="btn btn-outline-primary btn-sm">VOLTAR</a>
+    </form>
+@endsection

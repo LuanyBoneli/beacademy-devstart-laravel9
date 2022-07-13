@@ -2,8 +2,16 @@
 @section('title',"Usuário {$user->name}")
 @section('body')
     <h1>Usuário {{$user->name}}</h1>
+    @if($errors->any())
+        <div class="alert alert-danger" role="alert">
+            @foreach($errors->all() as $error)
+                {{$error}}<br>
+            @endforeach
+        </div>
+    @endif
 
     <form action="{{ route('users.update',$user->id) }}" method="post">
+        @method('PUT')
         @csrf
         <div class="mb-3">
             <input type="nome" name="name" class="form-control" placeholder="digite seu nome">

@@ -3,6 +3,8 @@
 @section('body')
 <h1>Listagem de Usuários</h1>
 <a href="{{ route('users.create') }}" class="btn btn-success">Novo usuario</a>
+
+
 <table class="table">
     <thead class="text-center">
     <tr>

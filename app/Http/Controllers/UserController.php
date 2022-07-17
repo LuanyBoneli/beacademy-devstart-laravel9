@@ -79,6 +79,13 @@ class UserController extends Controller
         $data = $request->only('name','email');
         if($request->password)
             $data['password']=bcrypt($request->password);
+        if ($request->image) {
+            if ($user->image && Storage::exists($user->image)) {
+                Storage::delete($user->image);
+            }
+
+            $data['image'] = $request->image->store('users');
+        }
 
         $data['is_admin'] = $request->admin?1:0;
 
